@@ -1,6 +1,6 @@
-# prontuario-medico
+# Prontuário Eletrônico ClinicData
 
-This template should help get you started developing with Vue 3 in Vite.
+Sistema de Prontuário Eletrônico do Paciente (PEP) desenvolvido com **Vue 3** e **Vite**, pensado especialmente para clínicas que buscam uma solução moderna, rápida e personalizável.
 
 ## Recommended IDE Setup
 
