@@ -1,4 +1,6 @@
+# -------------------------------------------------
 # Logs
+# -------------------------------------------------
 logs
 *.log
 npm-debug.log*
@@ -7,6 +9,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# -------------------------------------------------
+# Node / Front-end
+# -------------------------------------------------
 node_modules
 .DS_Store
 dist
@@ -17,14 +22,39 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
-# Editor directories and files
+# -------------------------------------------------
+# Python
+# -------------------------------------------------
+# Byte-code cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+.envrc
+
+# Environment variables
+.env
+.env.*
+
+# Certificates / keys
+*.pem
+*.crt
+*.key
+certs/
+backend/certs/
+
+# -------------------------------------------------
+# Editor / IDE files
+# -------------------------------------------------
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
 *.tsbuildinfo
