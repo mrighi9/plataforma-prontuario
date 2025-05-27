@@ -8,7 +8,7 @@ class User(Base):
     id       = Column(Integer, primary_key=True, index=True)
     name     = Column(String(100), nullable=False)
     email    = Column(String(100), nullable=False, unique=True, index=True)
-    password = Column(String(255), nullable=False)
+    hashed_password = Column(String(255), nullable=False)  # Renomeia o campo para refletir que é hashado
     cpf      = Column(String(14),  nullable=False)
     role     = Column(String(1),   nullable=False)   # 'A' admin, 'M' medic etc.
 

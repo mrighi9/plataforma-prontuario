@@ -1,8 +1,9 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import SessionLocal, engine
-from app import models
+from . import models  # Corrige a importação do módulo `models`
 from app.schemas.user import UserCreate, UserRead
 from app.crud.user import (
     create_user,
@@ -10,10 +11,27 @@ from app.crud.user import (
     get_user_by_id,
     delete_user,
 )
+from app.routes import auth
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Prontuario Médico API")
+
+
+# Configuração de CORS
+origins = [
+    "http://localhost",
+    "http://127.0.0.1",
+    "http://localhost:5173",  # Porta padrão do Vite
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # --------------------- Dep -----------------------------
@@ -52,3 +70,7 @@ def remove(user_id: int, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return None
+
+
+# Inclui o roteador de autenticação
+app.include_router(auth.router)
